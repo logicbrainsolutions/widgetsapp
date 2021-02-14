@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import FormUserDetails from './FormUserDetails';
-import FormPersonalDetails from './FormPersonalDetails';
-import Confirm from './Confirm';
+import WidgetNameForm from './WidgetNameForm';
+import WidgetLanguageForm from './WidgetLanguageForm';
 import Success from './Success';
 
 export class WidgetForm extends Component {
   state = {
     step: 1,
-    firstName: '',
-    lastName: '',
-    email: '',
-    occupation: '',
-    city: '',
-    bio: ''
+    widgetname: '',
+    language: ''
+   
   };
 
   // Proceed to next step
@@ -38,13 +34,13 @@ export class WidgetForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, occupation, city, bio } = this.state;
-    const values = { firstName, lastName, email, occupation, city, bio };
+    const { widgetname, language } = this.state;
+    const values = { widgetname, language };
 
     switch (step) {
       case 1:
         return (
-          <FormUserDetails
+          <WidgetNameForm
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
@@ -52,22 +48,15 @@ export class WidgetForm extends Component {
         );
       case 2:
         return (
-          <FormPersonalDetails
+          <WidgetLanguageForm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
           />
         );
+     
       case 3:
-        return (
-          <Confirm
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            values={values}
-          />
-        );
-      case 4:
         return <Success />;
       default:
         (console.log('This is a multi-step form built with React.'))

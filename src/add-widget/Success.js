@@ -18,6 +18,7 @@ export class Success extends Component {
 
   render() {
     return (
+    
       <MuiThemeProvider>
         <>
           <Dialog

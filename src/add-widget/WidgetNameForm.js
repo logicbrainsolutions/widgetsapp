@@ -5,10 +5,17 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-export class FormUserDetails extends Component {
+export class WidgetNameForm extends Component {
   continue = e => {
+    console.log('values')
     e.preventDefault();
-    this.props.nextStep();
+    if(this.props.values.widgetname !== ""){
+      this.props.nextStep();
+    }
+    
+  };
+  cancel = e => {
+    console.log('Canceled')
   };
 
   render() {
@@ -23,37 +30,30 @@ export class FormUserDetails extends Component {
           >
             <AppBar title="Enter User Details" />
             <TextField
-              placeholder="Enter Your First Name"
-              label="First Name"
-              onChange={handleChange('firstName')}
-              defaultValue={values.firstName}
+              placeholder="Enter Widget Name"
+              label="Widget Name"
+              onChange={handleChange('widgetname')}
+              defaultValue={values.widgetname}
               margin="normal"
               fullWidth
+              required
             />
+            
             <br />
-            <TextField
-              placeholder="Enter Your Last Name"
-              label="Last Name"
-              onChange={handleChange('lastName')}
-              defaultValue={values.lastName}
-              margin="normal"
-              fullWidth
-            />
             <br />
-            <TextField
-              placeholder="Enter Your Email"
-              label="Email"
-              onChange={handleChange('email')}
-              defaultValue={values.email}
-              margin="normal"
-              fullWidth
-            />
-            <br />
+            
             <Button
               color="primary"
               variant="contained"
+              disabled = {this.props.values.widgetname === ""}
               onClick={this.continue}
-            >Continue</Button>
+            >Next</Button>
+             <br />
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={this.cancel}
+            >Cancel</Button>
           </Dialog>
         </>
       </MuiThemeProvider>
@@ -61,4 +61,4 @@ export class FormUserDetails extends Component {
   }
 }
 
-export default FormUserDetails;
+export default WidgetNameForm;
