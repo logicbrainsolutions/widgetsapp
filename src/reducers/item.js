@@ -14,6 +14,5 @@ import {
         return state;
     }
   
-    return state;
   };
   

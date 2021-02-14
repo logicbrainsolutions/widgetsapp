@@ -19,9 +19,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Widgets extends Component {
-    constructor() {
-        super();
-    }
+    
     
     loadData = async (e) => {
         const data = JSON.parse(localStorage.getItem("widgets")|| "[]");
@@ -88,8 +86,9 @@ class Widgets extends Component {
 
     render() {
         return (
-            <div className="Ads">
-                <table id="customers">
+            <div >
+                <h1 data-testid="widgets-list">Widgets List</h1>
+                <table id="widgets" className="widgets" >
                     <thead>
                         <tr>
                             <th>Name</th>

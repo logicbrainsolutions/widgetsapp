@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -33,7 +32,7 @@ export class WidgetLanguageForm extends Component {
   };
 
   render() {
-    const { values, handleChangeLanguage } = this.props;
+    const { values } = this.props;
     return (
       <MuiThemeProvider>
         <>
@@ -44,7 +43,7 @@ export class WidgetLanguageForm extends Component {
           >
             <AppBar title="Enter Personal Details" />
 
-            Select Language:
+            <span className="language">Select Language:</span>
             <br /><br />
             <Dropdown options={this.state.options}
               onChange={this._onSelect}

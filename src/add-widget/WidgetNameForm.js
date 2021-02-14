@@ -13,8 +13,6 @@ export class WidgetNameForm extends Component {
     if (this.props.values.widgetname !== "") {
       this.props.nextStep();
     }
-
-
     this.addWidget(this.props.values)
     this.props.nextStep();
   };
