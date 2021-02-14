@@ -31,6 +31,14 @@ export class WidgetForm extends Component {
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
   };
+  handleLanguageChange = (selectedLanguage) => {
+    debugger;
+    const newValue = selectedLanguage === "" ? "English" : selectedLanguage;
+    this.setState({
+      language: newValue
+    });
+  };
+
 
   render() {
     const { step } = this.state;
@@ -40,17 +48,19 @@ export class WidgetForm extends Component {
     switch (step) {
       case 1:
         return (
-          <WidgetNameForm
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 2:
-        return (
           <WidgetLanguageForm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            handleChangeLanguage = {this.handleLanguageChange}
+            values={values}
+          />
+        );
+
+      case 2:
+        return (
+          <WidgetNameForm
+            nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
           />

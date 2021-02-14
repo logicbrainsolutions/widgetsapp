@@ -5,15 +5,25 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 export class WidgetNameForm extends Component {
   continue = e => {
     console.log('values')
     e.preventDefault();
-    if(this.props.values.widgetname !== ""){
+    if (this.props.values.widgetname !== "") {
       this.props.nextStep();
     }
-    
+
+
+    this.addWidget(this.props.values)
+    this.props.nextStep();
+  };
+  addWidget = (newWidget) => {
+    let data = JSON.parse(localStorage.getItem("widgets") || "[]");
+    console.log(data)
+    console.log(newWidget);
+    data.push({ name: newWidget.widgetname, language: newWidget.language === "" ? 'English' : newWidget.language })
+    localStorage.setItem('widgets', JSON.stringify(data));
   };
   cancel = e => {
     console.log('Canceled')
@@ -40,18 +50,18 @@ export class WidgetNameForm extends Component {
               fullWidth
               required
             />
-            
+
             <br />
             <br />
-            
+
             <Button
               color="primary"
               variant="contained"
-              disabled = {this.props.values.widgetname === ""}
+              disabled={this.props.values.widgetname === ""}
               onClick={this.continue}
-            >Next</Button>
-             <br />
-             
+            >Add Widget</Button>
+            <br />
+
             <Button
               color="secondary"
               variant="contained"

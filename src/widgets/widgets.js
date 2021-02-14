@@ -25,12 +25,7 @@ class Widgets extends Component {
     
     loadData = async (e) => {
         const data = JSON.parse(localStorage.getItem("widgets")|| "[]");
-        // JSON.stringify([
-        //     {name: 'Widget 1', language: 'English'},
-        //     {name: 'Widget 2', language: 'English'},
-        //     {name: 'Widget 3', language: 'Deutsch'}]);
-        // localStorage.setItem('widgets', data);
-        // const response = localStorage.getItem('widgets');
+        
         this.props.onLoad(data);
        
 

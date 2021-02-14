@@ -6,22 +6,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-
 import {withRouter} from 'react-router-dom'
-
 export class WidgetLanguageForm extends Component {
   continue = e => {
     e.preventDefault();
-    this.addWidget(this.props.values)
     this.props.nextStep();
   };
-  addWidget = (newWidget) => {
-    let data = JSON.parse(localStorage.getItem("widgets") || "[]");
-    console.log(data)
-    console.log(newWidget);
-    data.push({ name: newWidget.widgetname, language: newWidget.language === "" ? 'English' : newWidget.language })
-    localStorage.setItem('widgets', JSON.stringify(data));
-  }
+  
   constructor() {
     super();
     this.state = {
@@ -32,12 +23,9 @@ export class WidgetLanguageForm extends Component {
     this._onSelect = this._onSelect.bind(this)
   }
   _onSelect(option) {
-    this.props.values.language = option.value;
+    this.props.handleChangeLanguage(option.value)
+    
   }
-  handleChangeLanguage = input => e => {
-    debugger;
-    this.setState({ [input]: e.target.value });
-  };
 
   cancel = e => {
     console.log('Canceled');
@@ -45,7 +33,7 @@ export class WidgetLanguageForm extends Component {
   };
 
   render() {
-    const { values, handleChange } = this.props;
+    const { values, handleChangeLanguage } = this.props;
     return (
       <MuiThemeProvider>
         <>
@@ -72,7 +60,7 @@ export class WidgetLanguageForm extends Component {
               color="primary"
               variant="contained"
               onClick={this.continue}
-            >Add Widget</Button>
+            >Continue</Button>
              <br />
             <Button
               color="secondary"
