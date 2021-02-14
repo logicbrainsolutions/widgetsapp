@@ -4,7 +4,7 @@ import './App.css';
 import MyError from './Error/Error'
 import AddItem from './AddItem/AddItem';
 import Header from './Header/Header';
-import UserForm from './add-widget/WidgetForm';
+import WidgetForm from './add-widget/WidgetForm';
 import Widgets from './widgets/widgets';
 
 class App extends Component {
@@ -72,8 +72,7 @@ class App extends Component {
 
           <Route path="/error" component={MyError} />
           <Route path="/" exact component={Widgets} />
-          <Route path="/add-widget" exact component={UserForm} />
-          <Route path="/add-item" component={AddItem} />
+          <Route path="/add-widget" exact component={WidgetForm} />
           <Route component={MyError} />
         </Switch>
 

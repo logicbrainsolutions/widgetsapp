@@ -5,6 +5,7 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import {withRouter} from 'react-router-dom'
 export class WidgetNameForm extends Component {
   continue = e => {
     console.log('values')
@@ -16,6 +17,7 @@ export class WidgetNameForm extends Component {
   };
   cancel = e => {
     console.log('Canceled')
+    this.props.history.push("/");
   };
 
   render() {
@@ -49,6 +51,7 @@ export class WidgetNameForm extends Component {
               onClick={this.continue}
             >Next</Button>
              <br />
+             
             <Button
               color="secondary"
               variant="contained"
@@ -61,4 +64,4 @@ export class WidgetNameForm extends Component {
   }
 }
 
-export default WidgetNameForm;
+export default withRouter(WidgetNameForm);

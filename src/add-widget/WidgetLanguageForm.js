@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
+import {withRouter} from 'react-router-dom'
+
 export class WidgetLanguageForm extends Component {
   continue = e => {
     e.preventDefault();
@@ -38,7 +40,8 @@ export class WidgetLanguageForm extends Component {
   };
 
   cancel = e => {
-    console.log('Canceled')
+    console.log('Canceled');
+    this.props.history.push("/");
   };
 
   render() {
@@ -82,5 +85,4 @@ export class WidgetLanguageForm extends Component {
     );
   }
 }
-
-export default WidgetLanguageForm;
+export default withRouter( WidgetLanguageForm);
