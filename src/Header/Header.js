@@ -21,12 +21,6 @@ const HeaderView = () => {
 
 class Header extends React.Component {
   componentDidMount() {
-    if (localStorage.getItem('token')) {
-      this.props.resetToken({
-        token: localStorage.getItem('token'),
-        userId: localStorage.getItem('userId')
-      })
-    }
   }
 
   render() {
